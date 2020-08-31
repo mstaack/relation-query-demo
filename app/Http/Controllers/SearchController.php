@@ -8,15 +8,18 @@ class SearchController extends Controller
 {
     public function __invoke()
     {
+        $seatingType = 'u_form';
+        $seatingAmount = 60;
+
         $venues = Venue::query()->with([
             'seatings',
             'areas',
             'areas.seatings'
         ])->get();
 
-        // search venues having seatings where amount as total_amount by type
+        // find Venue has seatings with type/amount OR search venue having summed areas with total amount/type
 
-        // search venue or areas have seatings where amount as total_amount
+        // result should include venue 2, which has two rooms with each room having 30->u_form;
 
         return response()->json($venues);
     }
