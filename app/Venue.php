@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Venue extends Model
 {
+    protected $fillable = ['name'];
+
     public function areas(): HasMany
     {
         return $this->hasMany(Area::class);
